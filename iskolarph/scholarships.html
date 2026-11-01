@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scholarships | IskolarPH</title><link rel="stylesheet" href="css/style.css"></head><body><div id="site-header"></div><main class="wrap">
+<h1>Scholarship directory</h1>
+<div class="filters">
+<input type="search" id="q" placeholder="Search scholarships" aria-label="Search">
+<select id="fType"><option value="">All providers</option><option>Government</option><option>Private</option><option>School</option></select>
+<select id="fLevel"><option value="">All levels</option><option>Incoming College</option><option>Current College</option></select>
+<select id="fLoc"><option value="">All locations</option></select>
+<select id="fStatus"><option value="">All statuses</option><option>Open</option><option>Closing Soon</option><option>Upcoming</option><option>Deadline Passed</option><option>Needs Verification</option></select>
+<select id="fSort"><option value="name">Sort by name</option><option value="deadline">Sort by deadline</option></select></div>
+<p id="count" class="small" aria-live="polite"></p><div id="results" class="grid"></div>
+</main><div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/status.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/directory.js"></script>
+</body></html>
