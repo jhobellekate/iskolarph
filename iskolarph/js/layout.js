@@ -1,6 +1,6 @@
 // Shared header, navigation (with mobile menu) and footer for every page.
 (function(){
-  const links=[["index.html","Home"],["scholarships.html","Scholarships"],["matcher.html","Eligibility Matcher"],["saved.html","Saved"],["tracker.html","Tracker"],["about.html","About & Help"]];
+  const links=[["index.html","Home"],["scholarships.html","Scholarships"],["matcher.html","Eligibility Matcher"],["saved.html","Saved"],["tracker.html","Tracker"],["exam.html","Exam Prep"],["programs.html","Programs & Universities"],["about.html","About & Help"]];
   let here=location.pathname.split("/").pop()||"index.html";
   if(here==="details.html") here="scholarships.html";
   const nav=links.map(l=>`<a href="${l[0]}" ${l[0]===here?'class="active" aria-current="page"':""}>${l[1]}</a>`).join("");

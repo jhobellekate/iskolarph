@@ -1,9 +1,29 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Eligibility Matcher | IskolarPH</title><link rel="stylesheet" href="css/style.css"></head><body><div id="site-header"></div><main class="wrap">
-<h1>Eligibility matcher</h1>
-<p>Answer a few questions. Results are preliminary matches only. Always confirm with the provider.</p>
-<form id="matchForm" class="form" novalidate>
-<label>Education level<select id="mLevel"><option value="">Choose one</option><option>Incoming College</option><option>Current College</option></select></label>
-<label>Where do you live?<select id="mLoc"><option value="">Choose one</option></select></label>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Eligibility Matcher | IskolarPH</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="site-header"></div>
+        <main class="wrap">
+            <h1>Eligibility matcher</h1>
+            <p>Answer a few questions. Results are preliminary matches only. Always confirm with the provider.</p>
+            <form id="matchForm" class="form" novalidate>
+                <label>Education level
+                    <select id="mLevel">
+                        <option value="">Choose one</option>
+                        <option>Incoming College</option>
+                        <option>Current College</option>
+                    </select>
+                </label>
+                <label>Where do you live?
+                    <select id="mLoc">
+                        <option value="">Choose one</option>
+                    </select>
+                </label>
 <label>General weighted average (%)<input type="number" id="mGwa" min="60" max="100" step="0.01"></label>
 <label>Family annual income in PHP (optional)<input type="number" id="mIncome" min="0"></label>
 <label class="check"><input type="checkbox" id="mOfw"> I am an OFW or the child/sibling of one</label>

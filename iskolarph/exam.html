@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Exam Prep | IskolarPH</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="site-header"></div>
+        <main class="wrap">
+            <h1>Exam prep and review guide</h1>
+            <p>This is general preparation only. Entrance and scholarship exam coverage differs by school and can change, so always check the official exam announcement for the exam you are taking.</p>
+            <div class="filters">
+                <select id="eFilter" aria-label="Filter topics by progress">
+                    <option value="">All topics</option>
+                    <option>Not Started</option>
+                    <option>Reviewing</option>
+                    <option>Completed</option>
+                </select>
+            </div>
+            <p id="eSummary" class="small" aria-live="polite"></p>
+            <div id="examList"></div>
+        </main>
+        <div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/status.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/examdata.js"></script>
+<script src="js/exam.js"></script>
+</body></html>
