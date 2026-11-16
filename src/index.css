@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff6ec;
+  --color-paper: #fffcf7;
+  --color-ink: #4a3428;
+  --color-ink-soft: #6f5646;
+  --color-blush: #f4b3ab;
+  --color-blush-deep: #ee9c92;
+  --color-rose: #a83f36;
+  --color-sage: #cfe3c8;
+  --color-sky: #d2e5f1;
+  --color-butter: #fbe7b5;
+  --color-peach: #fbdccb;
+  --color-line: #ebd7c5;
+  --color-mist: #f8d9d6;
+  --color-stone: #efe6dd;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --radius-panel: 1.75rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-cream font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-extrabold tracking-tight; }
+  :focus-visible { outline: 3px solid var(--color-rose); outline-offset: 2px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+@layer components {
+  .btn { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-blush px-5 py-2 font-bold text-ink transition-colors hover:bg-blush-deep; }
+  .btn-ghost { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-blush bg-paper px-5 py-2 font-bold text-ink transition-colors hover:bg-peach; }
+  .field { @apply min-h-11 w-full rounded-xl border-2 border-line bg-paper px-3 py-2 text-ink; }
+  .panel { @apply rounded-panel border border-line bg-paper p-6; }
+  .label { @apply mb-1 block text-sm font-bold; }
+  .h-section { @apply mb-4 text-2xl md:text-3xl; }
+}
+
+@keyframes settle { from { translate: 0 -22px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+.note-in { animation: settle 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
