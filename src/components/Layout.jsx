@@ -6,7 +6,7 @@ import DetailsModal from "./DetailsModal.jsx";
 import Icon from "./Icon.jsx";
 import Logo from "./Logo.jsx";
 
-const LINKS = [["/", "Home"], ["/scholarships", "Scholarships"], ["/programs", "Programs"], ["/exam", "Exam prep"], ["/matcher", "Matcher"], ["/folder", "My folder"], ["/help", "Help"]];
+const LINKS = [["/", "Home"], ["/scholarships", "Scholarships"], ["/matcher", "Matcher"], ["/folder", "My folder"], ["/programs", "Programs"], ["/exam", "Exam prep"], ["/help", "Help"]];
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 
 // Wraps the app layout, nav, theme controls, and shared modal.
@@ -21,6 +21,10 @@ export default function Layout() {
   const dark = theme ? theme === "dark" : systemDark;
 
   useEffect(() => { setOpen(false); window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    const tab = LINKS.find(([to]) => to === pathname)?.[1] || "Home";
+    document.title = `IskolarPH: ${tab}`;
+  }, [pathname]);
   useEffect(() => {
     const mq = window.matchMedia(DARK_QUERY);
     const onChange = (e) => setSystemDark(e.matches);

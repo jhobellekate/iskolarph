@@ -8,6 +8,11 @@ const ART = {
   Education: "M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 1 2-2h13M9 7h6",
   Science: "M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4A1.5 1.5 0 0 0 19.5 19L14 9V3M7.5 15h9",
   "Hospitality and Tourism": "M5 8h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M4 13h16",
+  "Agriculture and Fisheries": "M12 21v-8M12 13c-5.5 0-8-4-8-9 5 0 8 3 8 8M12 15c0-5 3.5-8 8-8 0 5-2.5 9-8 9M4 21h16",
+  "Architecture and Design": "M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 10h.01M15 10h.01",
+  "Aviation and Maritime": "M2 16l9-4V3a1 1 0 0 1 2 0v9l9 4v2l-9-2-2 5-2-1 1-5-8 3z",
+  "Communication and Media": "M4 4h16v13H9l-5 4zM8 9h8M8 12h5",
+  "Law and Public Safety": "M12 3v18M5 6h14M5 6l-3 6h6L5 6zM19 6l-3 6h6l-3-6zM8 21h8M9 18h6",
 };
 const FALLBACK = "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM16 8l-2 6-6 2 2-6z";
 

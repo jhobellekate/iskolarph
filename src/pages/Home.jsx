@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { scholarships } from "../data/scholarships.js";
+import { findScholarship } from "../data/scholarships.js";
 import { programs } from "../data/programs.js";
 import { PERSONAS, TASKS } from "../data/personas.js";
 import { useLocalStorage } from "../lib/storage.js";
 import { getStatus } from "../lib/status.js";
+import { APPLICATION_STATUSES, useFolder } from "../context/FolderContext.jsx";
 import HeroScene from "../components/HeroScene.jsx";
 import StickyWall from "../components/StickyWall.jsx";
 import TornEdge from "../components/TornEdge.jsx";
@@ -14,14 +15,30 @@ import Icon from "../components/Icon.jsx";
 
 // Counts how many school listings are in a program summary.
 const listings = (p) => [...Object.values(p.pub), ...Object.values(p.pri)].reduce((n, str) => n + str.split(";").length, 0);
-const TILE_COLORS = ["bg-sage", "bg-sky", "bg-butter", "bg-peach", "bg-mist", "bg-stone"];
+const TILE_STYLES = {
+  Engineering: "bg-sky text-ink",
+  "Information Technology": "bg-sage text-ink",
+  "Agriculture and Fisheries": "bg-butter text-ink",
+  "Architecture and Design": "bg-mist text-ink",
+  "Aviation and Maritime": "bg-peach text-ink",
+  Business: "bg-cream text-ink",
+  "Communication and Media": "bg-stone text-ink",
+  Education: "bg-blush text-ink",
+  "Health Sciences": "bg-paper text-ink",
+  "Hospitality and Tourism": "bg-blush-deep text-ink",
+  "Law and Public Safety": "bg-line text-ink",
+  Science: "bg-ink-soft text-paper",
+  "Social Sciences": "bg-ink text-paper",
+};
 
 // Shows the most popular program fields on the home page.
 function ProgramsBand() {
   const fields = useMemo(() => {
     const map = {};
     programs.forEach((p) => { map[p.field] = (map[p.field] || 0) + listings(p); });
-    return Object.entries(map).sort((a, b) => b[1] - a[1]);
+    const sorted = Object.entries(map).sort((a, b) => b[1] - a[1]);
+    const engineering = sorted.find(([field]) => field === "Engineering");
+    return engineering ? [engineering, ...sorted.filter(([field]) => field !== "Engineering")] : sorted;
   }, []);
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
@@ -29,7 +46,7 @@ function ProgramsBand() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2">
         {fields.map(([field], i) => (
           <Link key={field} to={"/programs?field=" + encodeURIComponent(field)}
-            className={`${TILE_COLORS[i % TILE_COLORS.length]} relative flex min-h-32 flex-col justify-end overflow-hidden rounded-2xl p-4 hover:brightness-95 ${i === 0 ? "col-span-2 row-span-2 rounded-panel p-6" : ""}`}>
+            className={`${TILE_STYLES[field] || "bg-stone text-ink"} relative flex min-h-32 flex-col justify-end overflow-hidden rounded-2xl p-4 hover:brightness-95 ${i === 0 ? "col-span-2 row-span-2 rounded-panel p-6" : ""}`}>
             <FieldArt field={field} big={i === 0} />
             <span className={`relative font-extrabold ${i === 0 ? "text-3xl" : "text-lg"}`}>{field}</span>
           </Link>
@@ -56,13 +73,22 @@ export default function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const [pid, setPid] = useLocalStorage("iskolarph_persona", "incoming");
+  const { saved, entryOf } = useFolder();
   const persona = PERSONAS.find((p) => p.id === pid) || PERSONAS[0];
 
-  const upcoming = useMemo(() => {
-    const dated = scholarships.filter((s) => s.deadline && getStatus(s).days >= 0);
-    const mine = dated.filter((s) => s.levels.some((l) => persona.levels.includes(l)));
-    return (mine.length ? mine : dated).sort((a, b) => getStatus(a).days - getStatus(b).days);
-  }, [persona]);
+  const reminders = useMemo(() => saved
+    .map((id) => {
+      const scholarship = findScholarship(id);
+      if (!scholarship) return null;
+      const entry = entryOf(id);
+      const deadline = entry.personalDeadline || scholarship.deadline;
+      const reminder = { ...scholarship, deadline };
+      return deadline && !APPLICATION_STATUSES.includes(entry.status) && getStatus(reminder).days >= 0
+        ? { ...reminder, isPersonalDeadline: Boolean(entry.personalDeadline) }
+        : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => getStatus(a).days - getStatus(b).days), [saved, entryOf]);
 
   const bands = { programs: <ProgramsBand key="programs" />, parents: <ParentsBand key="parents" /> };
   return (
@@ -89,9 +115,11 @@ export default function Home() {
             </fieldset>
           </div>
           <div className="relative min-w-0">
-            <div className="hero-scene overflow-hidden rounded-panel shadow-lg"><HeroScene /></div>
-            <div className="mt-4 sm:absolute sm:left-[4%] sm:top-[6%] sm:mt-0 sm:w-[46%]">
-              <StickyWall items={upcoming.slice(0, 4)} />
+            <div className="hero-scene relative min-h-[19rem] overflow-hidden rounded-panel bg-peach shadow-lg sm:min-h-0">
+              <HeroScene />
+              <div className="absolute inset-x-0 top-0 aspect-[14/11]">
+                <StickyWall items={reminders} />
+              </div>
             </div>
           </div>
         </div>
