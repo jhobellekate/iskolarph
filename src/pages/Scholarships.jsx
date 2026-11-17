@@ -9,16 +9,19 @@ const PAGE = 24;
 const PLACES = [...new Set(scholarships.map((s) => s.location))].sort();
 const EMPTY = { q: "", type: "", level: "", loc: "", status: "", sort: "name" };
 
+// Renders a label and input for the scholarship filter panel.
 function Field({ id, label, children }) {
   return <div><label htmlFor={id} className="label">{label}</label>{children}</div>;
 }
 
+// Shows the searchable scholarship directory with filters and pagination.
 export default function Scholarships() {
   const [params] = useSearchParams();
   const { isSaved, toggleSaved, openDetails } = useFolder();
   const [f, setF] = useState({ ...EMPTY, q: params.get("q") || "" });
   const [shown, setShown] = useState(PAGE);
   const [panel, setPanel] = useState(false);
+  // Updates a filter and resets the visible list size.
   const set = (k) => (e) => { setF((o) => ({ ...o, [k]: e.target.value })); setShown(PAGE); };
 
   const list = useMemo(() => {

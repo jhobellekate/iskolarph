@@ -1,3 +1,4 @@
+// Draws the hero illustration for the landing page.
 export default function HeroScene() {
   return (
     <svg viewBox="0 0 560 440" role="img" aria-label="Illustration of a sunny study desk by a window, with a mug, notebook, books and a vase of tulips" className="block h-auto w-full">

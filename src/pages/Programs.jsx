@@ -5,6 +5,7 @@ import { REGIONS, programs } from "../data/programs.js";
 const FIELDS = [...new Set(programs.map((p) => p.field))].sort();
 const EMPTY = { q: "", field: "", type: "", region: "" };
 
+// Flattens a program into school rows for filtering and display.
 function rowsFor(p) {
   const rows = [];
   [["Public", p.pub], ["Private", p.pri]].forEach(([type, byRegion]) =>
@@ -12,6 +13,7 @@ function rowsFor(p) {
   return rows;
 }
 
+// Renders a form field label and input wrapper.
 function Field({ id, label, children }) {
   return <div><label htmlFor={id} className="label">{label}</label>{children}</div>;
 }
@@ -19,10 +21,12 @@ function Field({ id, label, children }) {
 const TH = "px-3 py-2 font-extrabold";
 const CELL = "block px-4 py-1 before:mr-2 before:font-normal before:text-ink-soft before:content-[attr(data-label)] md:table-cell md:px-3 md:py-2 md:before:content-none";
 
+// Lists universities and programs with filters for field, region, and type.
 export default function Programs() {
   const [params] = useSearchParams();
   const [f, setF] = useState({ ...EMPTY, field: params.get("field") || "" });
   const [panel, setPanel] = useState(false);
+  // Updates a single filter value in the program search form.
   const set = (k) => (e) => setF((o) => ({ ...o, [k]: e.target.value }));
   const filtering = f.q || f.field || f.type || f.region;
 

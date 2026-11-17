@@ -4,14 +4,17 @@ import { useLocalStorage } from "../lib/storage.js";
 export const STATUSES = ["Interested", "Gathering documents", "Ready to apply", "Applied", "Done"];
 const LEGACY = { "Preparing Requirements": "Gathering documents", "Ready to Apply": "Ready to apply", Completed: "Done" };
 const Ctx = createContext(null);
+// Returns the folder context for the current page.
 export const useFolder = () => useContext(Ctx);
 
+// Normalizes saved entries before reading or updating them.
 const norm = (raw) => {
   const e = { status: "Interested", checked: [], personalDeadline: "", ...raw };
   e.status = LEGACY[e.status] || e.status;
   return e;
 };
 
+// Provides saved scholarship state and modal controls to the app.
 export function FolderProvider({ children }) {
   const [saved, setSaved] = useLocalStorage("iskolarph_saved", []);
   const [tracker, setTracker] = useLocalStorage("iskolarph_tracker", {});

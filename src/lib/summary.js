@@ -1,6 +1,7 @@
 import { findScholarship } from "../data/scholarships.js";
 import { formatDate } from "./status.js";
 
+// Builds a shareable shortlist summary for saved scholarships.
 export function buildSummary(ids, entryOf) {
   const lines = ids.map(findScholarship).filter(Boolean).map((s) => {
     const e = entryOf(s.id);

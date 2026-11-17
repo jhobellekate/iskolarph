@@ -5241,4 +5241,5 @@ export const scholarships = [
   link:null},
 
 ];
+// Finds a scholarship by its unique id in the dataset.
 export const findScholarship = (id) => scholarships.find((s) => s.id === id);

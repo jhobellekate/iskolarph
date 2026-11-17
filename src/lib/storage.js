@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 
+// Reads and writes browser storage with a React state hook.
 export function useLocalStorage(key, initial) {
   const [value, setValue] = useState(() => {
     try {

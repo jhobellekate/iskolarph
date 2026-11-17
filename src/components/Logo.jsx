@@ -1,4 +1,5 @@
 // One logo, used in the header, the footer and as public/favicon.svg.
+// Renders the IskolarPH brand mark and title.
 export default function Logo({ className = "" }) {
   return (
     <span className={`inline-flex items-center gap-2 font-extrabold ${className}`}>

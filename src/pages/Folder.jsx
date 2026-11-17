@@ -5,9 +5,11 @@ import { daysLabel, formatDate, getStatus } from "../lib/status.js";
 import ShareButton from "../components/ShareButton.jsx";
 import TornEdge from "../components/TornEdge.jsx";
 
+// Displays one saved scholarship with status, deadline, and document tracking.
 function FolderCard({ s }) {
   const { entryOf, updateEntry, toggleSaved, openDetails } = useFolder();
   const e = entryOf(s.id);
+  // Toggles a document as ready or still missing.
   const toggleDoc = (i) => updateEntry(s.id, { checked: e.checked.includes(i) ? e.checked.filter((x) => x !== i) : [...e.checked, i] });
   return (
     <article className="flex min-w-0 flex-col gap-2 rounded-2xl border border-line bg-paper p-5">
@@ -30,6 +32,7 @@ function FolderCard({ s }) {
   );
 }
 
+// Lists saved scholarships by status and highlights deadlines to watch.
 export default function Folder() {
   const { saved, entryOf } = useFolder();
   const items = saved.map(findScholarship).filter(Boolean);

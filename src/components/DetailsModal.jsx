@@ -6,7 +6,9 @@ import { formatDate, getStatus } from "../lib/status.js";
 import Icon from "./Icon.jsx";
 import StatusChip from "./StatusChip.jsx";
 
+// Renders a list block for eligibility and document details.
 const List = ({ items }) => <ul className="list-disc space-y-1 pl-5">{items.map((x, i) => <li key={i}>{x}</li>)}</ul>;
+// Renders a titled section inside the scholarship detail modal.
 const Section = ({ title, children }) => (
   <section className="border-t border-dashed border-line pt-3">
     <h3 className="mb-1 text-lg">{title}</h3>
@@ -15,6 +17,7 @@ const Section = ({ title, children }) => (
 );
 
 // Native <dialog>: focus trap, Esc to close and focus restore come from the browser.
+// Shows a scholarship detail dialog with save and reporting actions.
 export default function DetailsModal() {
   const { detailId, closeDetails, isSaved, toggleSaved } = useFolder();
   const ref = useRef(null);
@@ -29,6 +32,7 @@ export default function DetailsModal() {
   }, [s]);
   useEffect(() => () => { document.body.style.overflow = ""; }, []);
 
+  // Clears the modal state and restores page scrolling when closed.
   const handleClose = () => { document.body.style.overflow = ""; closeDetails(); };
   return (
     <dialog

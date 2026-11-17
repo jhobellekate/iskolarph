@@ -9,6 +9,7 @@ import Logo from "./Logo.jsx";
 const LINKS = [["/", "Home"], ["/scholarships", "Scholarships"], ["/programs", "Programs"], ["/exam", "Exam prep"], ["/matcher", "Matcher"], ["/folder", "My folder"], ["/help", "Help"]];
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 
+// Wraps the app layout, nav, theme controls, and shared modal.
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const [showTop, setShowTop] = useState(false);

@@ -6,6 +6,7 @@ const LEVELS = ["Not started", "Reviewing", "Done"];
 const LEGACY = { "Not Started": "Not started", Completed: "Done" };
 const TONE = { "Not started": "bg-stone", Reviewing: "bg-butter", Done: "bg-sage" };
 
+// Renders one practice question with selectable answers.
 function Sample({ q }) {
   const [pick, setPick] = useState(null);
   return (
@@ -19,10 +20,12 @@ function Sample({ q }) {
   );
 }
 
+// Shows exam topics, review links, and progress tracking.
 export default function ExamPrep() {
   const [progress, setProgress] = useLocalStorage("iskolarph_exam", {});
   const [sid, setSid] = useState(examSubjects[0].id);
-  const status = (id) => LEGACY[progress[id]] || progress[id] || "Not started";
+  // Resolves the saved progress label for a specific topic.
+const status = (id) => LEGACY[progress[id]] || progress[id] || "Not started";
   const all = examSubjects.flatMap((s) => s.topics);
   const done = all.filter((t) => status(t.id) === "Done").length;
   const subject = examSubjects.find((s) => s.id === sid);

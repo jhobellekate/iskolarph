@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useFolder } from "../context/FolderContext.jsx";
 import { buildSummary } from "../lib/summary.js";
 
+// Lets the user copy a saved scholarship shortlist to the clipboard.
 export default function ShareButton() {
   const { saved, entryOf } = useFolder();
   const [msg, setMsg] = useState("");
+  // Copies the saved scholarship list in a shareable text format.
   async function copy() {
     if (!saved.length) { setMsg("Save a scholarship first, then copy your shortlist."); return; }
     try {

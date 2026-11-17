@@ -1,4 +1,5 @@
 // Rule-based preliminary matching. Missing data gives "uncertain", never a guess.
+// Checks whether a scholarship matches the user profile.
 export function checkScholarship(s, me) {
   const bad = [], good = [], unsure = [];
   if (s.levels.includes(me.level)) good.push("Open to " + me.level.toLowerCase() + " students");

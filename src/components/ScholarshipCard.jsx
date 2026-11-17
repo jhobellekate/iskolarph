@@ -3,6 +3,7 @@ import Icon from "./Icon.jsx";
 import StatusChip from "./StatusChip.jsx";
 import { formatDate, getStatus, placeText } from "../lib/status.js";
 
+// Displays a compact scholarship summary with save and view actions.
 function ScholarshipCard({ s, saved, onToggle, onOpen }) {
   return (
     <article className="flex min-w-0 flex-col gap-1.5 rounded-2xl border border-line bg-paper p-5">

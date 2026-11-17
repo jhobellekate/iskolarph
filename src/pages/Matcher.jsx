@@ -8,6 +8,7 @@ const PLACES = [...new Set(scholarships.map((s) => s.location))].filter((p) => p
 const STEPS = 5;
 const START = { step: 0, a: { level: "", loc: "", gwa: "", income: "" }, ofw: null };
 
+// Renders a categorized list of scholarship matches.
 function Group({ title, items, show, onMore }) {
   const { openDetails } = useFolder();
   return (
@@ -29,13 +30,16 @@ function Group({ title, items, show, onMore }) {
   );
 }
 
+// Asks the user a few questions and ranks scholarships by fit.
 export default function Matcher() {
   // Saved in localStorage, so answers and results survive switching tabs and reloads.
   const [saved, setSaved] = useLocalStorage("iskolarph_matcher", START);
   const { step, a, ofw } = saved;
   const [err, setErr] = useState("");
   const [show, setShow] = useState({ fit: 8, maybe: 8, no: 8 });
+  // Merges the current matcher answers with the next form state.
   const patch = (c) => setSaved((o) => ({ ...o, ...c }));
+  // Updates one matcher answer without overwriting the rest.
   const setAns = (k, v) => setSaved((o) => ({ ...o, a: { ...o.a, [k]: v } }));
 
   const groups = useMemo(() => {
@@ -49,6 +53,7 @@ export default function Matcher() {
     };
   }, [a, ofw]);
 
+  // Advances to the next question after validating the current answer.
   function next() {
     if (step === 0 && !a.level) return setErr("Choose one to continue.");
     if (step === 1 && !a.loc) return setErr("Choose where you live to continue.");
@@ -59,6 +64,7 @@ export default function Matcher() {
     setErr(""); patch({ step: step + 1 });
   }
 
+  // Resets the matcher form and results to start over.
   function changeEligibility() {
     setShow({ fit: 8, maybe: 8, no: 8 });
     setErr("");

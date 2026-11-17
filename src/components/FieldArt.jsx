@@ -11,6 +11,7 @@ const ART = {
 };
 const FALLBACK = "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM16 8l-2 6-6 2 2-6z";
 
+// Renders a small field icon for the home and program cards.
 export default function FieldArt({ field, big = false }) {
   const size = big ? "h-60 w-60" : "h-36 w-36";
   return (

@@ -5,6 +5,7 @@ const COLORS = ["bg-butter", "bg-sage", "bg-sky", "bg-mist"];
 const TILTS = ["-rotate-2", "rotate-1", "rotate-2", "-rotate-1"];
 
 // Real deadlines, pinned as notes. The memorable element of the hero.
+// Shows upcoming scholarship deadlines as a pinned note wall.
 export default function StickyWall({ items }) {
   const { openDetails } = useFolder();
   if (!items.length)

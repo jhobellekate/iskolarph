@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
+// Renders a help section with a title and body content.
 const Block = ({ title, children }) => (<section className="panel"><h2 className="mb-2 text-xl">{title}</h2>{children}</section>);
 
+// Explains how to use the app and what to watch for.
 export default function Help() {
   return (
     <div className="mx-auto max-w-3xl space-y-4 px-4 py-8">

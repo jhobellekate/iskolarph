@@ -12,9 +12,11 @@ import ShareButton from "../components/ShareButton.jsx";
 import FieldArt from "../components/FieldArt.jsx";
 import Icon from "../components/Icon.jsx";
 
+// Counts how many school listings are in a program summary.
 const listings = (p) => [...Object.values(p.pub), ...Object.values(p.pri)].reduce((n, str) => n + str.split(";").length, 0);
 const TILE_COLORS = ["bg-sage", "bg-sky", "bg-butter", "bg-peach", "bg-mist", "bg-stone"];
 
+// Shows the most popular program fields on the home page.
 function ProgramsBand() {
   const fields = useMemo(() => {
     const map = {};
@@ -37,6 +39,7 @@ function ProgramsBand() {
   );
 }
 
+// Highlights the shareable planning section for families.
 function ParentsBand() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
@@ -48,6 +51,7 @@ function ParentsBand() {
   );
 }
 
+// Displays the landing page with search, programs, and upcoming deadlines.
 export default function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");

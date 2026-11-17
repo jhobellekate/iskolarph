@@ -9,6 +9,7 @@ import Matcher from "./pages/Matcher.jsx";
 import Folder from "./pages/Folder.jsx";
 import Help from "./pages/Help.jsx";
 
+// Renders the app shell and route tree.
 export default function App() {
   return (
     <FolderProvider>
