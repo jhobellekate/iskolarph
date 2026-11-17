@@ -36,7 +36,7 @@ export default function DetailsModal() {
       onClose={handleClose}
       onClick={(e) => { if (e.target === ref.current) ref.current.close(); }}
       aria-labelledby="modal-title"
-      className="m-auto max-h-[85vh] w-[min(94vw,640px)] overflow-hidden rounded-panel border border-line bg-paper p-0 text-ink shadow-2xl backdrop:bg-ink/40 backdrop:backdrop-blur-sm open:flex open:flex-col"
+      className="m-auto max-h-[85vh] w-[min(94vw,640px)] overflow-hidden rounded-panel border border-line bg-paper p-0 text-ink shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:flex-col"
     >
       {s && (
         <>

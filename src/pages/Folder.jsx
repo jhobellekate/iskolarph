@@ -58,7 +58,7 @@ export default function Folder() {
                   <ul className="space-y-1">{soon.map((s) => <li key={s.id} className="font-bold">{s.name}: {formatDate(s.deadline)}, {daysLabel(getStatus(s).days).toLowerCase()}</li>)}</ul>
                 </div>
               </section>
-              <TornEdge fill="#fbe7b5" />
+              <TornEdge className="text-butter" />
             </>
           )}
           <div className="mx-auto max-w-6xl px-4 py-8">

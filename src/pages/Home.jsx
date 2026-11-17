@@ -51,7 +51,7 @@ function ParentsBand() {
 export default function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
-  const [pid, setPid] = useLocalStorage("iskolarph_persona", "shs");
+  const [pid, setPid] = useLocalStorage("iskolarph_persona", "incoming");
   const persona = PERSONAS.find((p) => p.id === pid) || PERSONAS[0];
 
   const upcoming = useMemo(() => {
@@ -76,8 +76,8 @@ export default function Home() {
               <legend className="mb-2 font-bold">I am a...</legend>
               <div className="flex flex-wrap gap-2">
                 {PERSONAS.map((p) => (
-                  <button key={p.id} type="button" aria-pressed={p.id === pid} onClick={() => setPid(p.id)}
-                    className={`min-h-11 rounded-full border-2 px-4 font-bold ${p.id === pid ? "border-ink bg-ink text-paper" : "border-blush bg-paper hover:bg-cream"}`}>
+                  <button key={p.id} type="button" aria-pressed={p.id === persona.id} onClick={() => setPid(p.id)}
+                    className={`min-h-11 rounded-full border-2 px-4 font-bold ${p.id === persona.id ? "border-ink bg-ink text-paper" : "border-blush bg-paper hover:bg-cream"}`}>
                     {p.label}
                   </button>
                 ))}
@@ -85,14 +85,14 @@ export default function Home() {
             </fieldset>
           </div>
           <div className="relative min-w-0">
-            <div className="overflow-hidden rounded-panel shadow-lg"><HeroScene /></div>
+            <div className="hero-scene overflow-hidden rounded-panel shadow-lg"><HeroScene /></div>
             <div className="mt-4 sm:absolute sm:left-[4%] sm:top-[6%] sm:mt-0 sm:w-[46%]">
               <StickyWall items={upcoming.slice(0, 4)} />
             </div>
           </div>
         </div>
       </section>
-      <TornEdge fill="#fbdccb" />
+      <TornEdge className="text-peach" />
 
       <section className="mx-auto max-w-6xl px-4 py-10">
         <h2 className="h-section">Start here</h2>
