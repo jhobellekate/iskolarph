@@ -17,7 +17,7 @@ export default function Help() {
         </ol>
       </Block>
       <Block title="Where the information comes from">
-        <p>Records come from public announcements, official pages and a shared scholarship list updated October 12, 2026. Deadlines that were not confirmed show as "Needs verification". We never invent a date.</p>
+        <p>Records come from public announcements, official pages and a shared scholarship list updated November 15, 2026. Deadlines that were not confirmed show as "Needs verification". We never invent a date.</p>
       </Block>
       <Block title="What to keep in mind">
         <ul className="list-disc space-y-1 pl-5">

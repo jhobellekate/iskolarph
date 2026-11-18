@@ -72,7 +72,7 @@ function ParentsBand() {
 export default function Home() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
-  const [pid, setPid] = useLocalStorage("iskolarph_persona", "incoming");
+  const [pid] = useLocalStorage("iskolarph_persona", "incoming");
   const { saved, entryOf } = useFolder();
   const persona = PERSONAS.find((p) => p.id === pid) || PERSONAS[0];
 
@@ -97,22 +97,11 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-8 pt-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="min-w-0">
             <h1 className="max-w-[20ch] text-4xl leading-tight md:text-5xl">Find the scholarship that fits your grades, your course, and your budget.</h1>
-            <form onSubmit={(e) => { e.preventDefault(); navigate("/scholarships?q=" + encodeURIComponent(q)); }} className="mt-6 flex flex-wrap gap-2" role="search">
+            <form onSubmit={(e) => { e.preventDefault(); const query = q.trim(); if (query) navigate("/scholarships?q=" + encodeURIComponent(query)); }} className="mt-6 flex flex-wrap gap-2" role="search">
               <label htmlFor="hero-q" className="sr-only">Search scholarships</label>
               <input id="hero-q" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Try 'engineering', 'Davao', or 'OFW dependents'" className="field min-w-0 flex-1 basis-60" />
-              <button className="btn"><Icon name="search" className="h-4 w-4" />Search scholarships</button>
+              <button className="btn disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-blush" disabled={!q.trim()}><Icon name="search" className="h-4 w-4" />Search scholarships</button>
             </form>
-            <fieldset className="mt-6">
-              <legend className="mb-2 font-bold">I am a...</legend>
-              <div className="flex flex-wrap gap-2">
-                {PERSONAS.map((p) => (
-                  <button key={p.id} type="button" aria-pressed={p.id === persona.id} onClick={() => setPid(p.id)}
-                    className={`min-h-11 rounded-full border-2 px-4 font-bold ${p.id === persona.id ? "border-ink bg-ink text-paper" : "border-blush bg-paper hover:bg-cream"}`}>
-                    {p.label}
-                  </button>
-                ))}
-              </div>
-            </fieldset>
           </div>
           <div className="relative min-w-0">
             <div className="hero-scene relative min-h-[19rem] overflow-hidden rounded-panel bg-peach shadow-lg sm:min-h-0">

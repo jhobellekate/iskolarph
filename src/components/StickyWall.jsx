@@ -18,7 +18,7 @@ export default function StickyWall({ items }) {
   return (
     <div className="pointer-events-none absolute inset-0">
       <div className="pointer-events-auto absolute left-[4%] top-[6%] w-[48%] sm:w-[46%]">
-        <h2 className="mb-2 whitespace-nowrap text-[10px] font-extrabold leading-tight sm:text-sm">Your saved deadlines</h2>
+        <h2 className="deadline-heading mb-2 whitespace-nowrap text-[10px] font-extrabold leading-tight sm:text-sm">Your saved deadlines</h2>
         {items.length > 0 ? (
           <ul className="grid grid-cols-2 gap-1 sm:gap-4">
             {visibleItems.map((s, i) => (
@@ -26,7 +26,7 @@ export default function StickyWall({ items }) {
                 <button
                   onClick={() => openDetails(s.id)}
                   style={{ animationDelay: i * 140 + "ms" }}
-                  className={`note-in relative block min-h-16 w-full rounded-md ${COLORS[i % 4]} ${TILTS[i % 4]} p-1.5 pt-3 text-left shadow-md transition-transform hover:rotate-0 sm:min-h-24 sm:p-3 sm:pt-5`}
+                  className={`deadline-note note-in relative block min-h-16 w-full rounded-md ${COLORS[i % 4]} ${TILTS[i % 4]} p-1.5 pt-3 text-left shadow-md transition-transform hover:rotate-0 sm:min-h-24 sm:p-3 sm:pt-5`}
                 >
                   <span aria-hidden="true" className="absolute left-1/2 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-rose" />
                   <span className="block font-hand text-base leading-none sm:text-2xl">{shortDate(s.deadline)}</span>
@@ -37,7 +37,7 @@ export default function StickyWall({ items }) {
             ))}
           </ul>
         ) : (
-          <div className="note-in rounded-lg bg-butter p-3 text-[11px] shadow-md sm:text-sm">
+          <div className="deadline-note note-in rounded-lg bg-butter p-3 text-[11px] shadow-md sm:text-sm">
             <p className="font-bold">No upcoming reminders in My Folder. Save a scholarship or add a future personal deadline there to pin it here.</p>
             <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
               <Link to="/scholarships" className="font-bold underline">Browse scholarships</Link>

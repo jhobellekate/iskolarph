@@ -54,3 +54,9 @@ html { color-scheme: light; }
 }
 [data-theme="dark"] .btn-ghost, [data-theme="dark"] .border-blush { border-color: #c9766d; }
 [data-theme="dark"] .hero-scene { filter: brightness(0.8) saturate(0.9); }
+[data-theme="dark"] .deadline-heading { color: #4a3428; }
+[data-theme="dark"] .deadline-note { color: #4a3428; }
+[data-theme="dark"] .deadline-note.bg-butter { background-color: #fbe7b5; }
+[data-theme="dark"] .deadline-note.bg-sage { background-color: #cfe3c8; }
+[data-theme="dark"] .deadline-note.bg-sky { background-color: #d2e5f1; }
+[data-theme="dark"] .deadline-note.bg-mist { background-color: #f8d9d6; }
