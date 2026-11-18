@@ -12,8 +12,8 @@ export default function Help() {
         <ol className="list-decimal space-y-1 pl-5">
           <li>Search or filter the <Link className="font-bold text-rose underline" to="/scholarships">scholarship directory</Link> and open one to read its details.</li>
           <li>Answer the <Link className="font-bold text-rose underline" to="/matcher">matcher</Link> questions to see likely fits.</li>
-          <li>Save what interests you, then track documents and deadlines in <Link className="font-bold text-rose underline" to="/folder">My folder</Link>.</li>
-          <li>Use <Link className="font-bold text-rose underline" to="/programs">Programs</Link> and <Link className="font-bold text-rose underline" to="/exam">Exam prep</Link> to plan your degree and review.</li>
+          <li>Save what interests you, then track documents and deadlines in <Link className="font-bold text-rose underline" to="/folder">My Folder</Link>.</li>
+          <li>Use <Link className="font-bold text-rose underline" to="/programs">Programs</Link> and <Link className="font-bold text-rose underline" to="/exam">Exam Prep</Link> to plan your degree and review.</li>
         </ol>
       </Block>
       <Block title="Where the information comes from">

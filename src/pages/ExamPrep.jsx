@@ -32,7 +32,7 @@ const status = (id) => LEGACY[progress[id]] || progress[id] || "Not started";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-3xl md:text-4xl">Exam prep</h1>
+      <h1 className="text-3xl md:text-4xl">Exam Prep</h1>
       <p className="mt-2 max-w-prose rounded-2xl bg-butter p-4">General practice only. Check your school's exam announcement for what it covers.</p>
       <div className="mt-4 max-w-md">
         <p className="mb-1 font-bold">{done} of {all.length} topics done</p>

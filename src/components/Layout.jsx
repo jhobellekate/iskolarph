@@ -6,7 +6,7 @@ import DetailsModal from "./DetailsModal.jsx";
 import Icon from "./Icon.jsx";
 import Logo from "./Logo.jsx";
 
-const LINKS = [["/", "Home"], ["/scholarships", "Scholarships"], ["/matcher", "Matcher"], ["/folder", "My folder"], ["/programs", "Programs"], ["/exam", "Exam prep"], ["/help", "Help"]];
+const LINKS = [["/", "Home"], ["/scholarships", "Scholarships"], ["/matcher", "Matcher"], ["/folder", "My Folder"], ["/programs", "Programs"], ["/exam", "Exam Prep"], ["/help", "Help"]];
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 
 // Wraps the app layout, nav, theme controls, and shared modal.

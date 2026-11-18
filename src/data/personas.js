@@ -1,3 +1,4 @@
+// Defines the saved student profiles and the home-page recommendations shown for each one.
 export const PERSONAS = [
   { id: "incoming", label: "Incoming college student", levels: ["Incoming College"], tasks: ["matcher", "programs", "exam"], order: ["programs", "parents"],
     blurb: "Check which scholarships match you, then compare schools for your degree." },

@@ -104,7 +104,7 @@ export default function Folder() {
   return (
     <div>
       <div className="mx-auto max-w-6xl px-4 pt-8">
-        <h1 className="text-3xl md:text-4xl">My folder</h1>
+        <h1 className="text-3xl md:text-4xl">My Folder</h1>
       </div>
       {items.length === 0 ? (
         <div className="mx-auto mt-6 max-w-6xl px-4">
