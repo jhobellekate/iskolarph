@@ -18,7 +18,7 @@ export const scholarships = [
   start:null,
   deadline:null,
   verified:"2026-11-15",
-  link:"https://creatorapp.zohopublic.com/aboitizfdn/aboitiz-college-scholarshipapplication-form"},
+  link:"https://aboitiz.com/aboitiz-foundation/aboitiz-future-leaders-scholarship"},
 
  {id:"adamson-ozanam",
   name:"Ozanam Study Grant Program",
